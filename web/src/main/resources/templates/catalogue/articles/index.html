@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" data-th-href="@{/css/style.css}">
+    <title>Exploring the art Exhibition: &#34;Path. Tension.&#34;</title>
+</head>
+<body>
+<div th:replace="catalogue/html/parts/header :: copy"></div>
+<main>
+    <div class="container py-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col-md-6 th:each="article : ${listArticles}"">
+                <a data-th-href="@{'/web/article/' + ${article.id}}">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/dark-dark-street.jpg}" class="card-img" alt="dark-dark-street">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">On black, black street</h5>
+                            <p class="card-text">I went to the doll theatre</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="/web/article/1">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/dark-dark-street.jpg}" class="card-img" alt="dark-dark-street">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">On black, black street</h5>
+                            <p class="card-text">I went to the doll theatre</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/elefandrick.jpg}" class="card-img" alt="elefandrick">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">The wondrous handmade doll</h5>
+                            <p class="card-text">We bought the awesome doll and clothes for it</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/exhibition_autumn_salon/exhibition-autumn-salon.jpg}" class="card-img" alt="exhibition-autumn-salon">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">The autumn salon by BelGazPrombank</h5>
+                            <p class="card-text">I attend the autumn salon and it was awesome</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/grumming-cats.jpg}" class="card-img" alt="grumming-cats">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">How is going the grumming your pets</h5>
+                            <p class="card-text">My cats went to the pet hairdresser and they got very beauty</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/naroch.jpg}" class="card-img" alt="naroch">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">We closed the summer season at Lake Naroch.</h5>
+                            <p class="card-text">It was wonderful</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <div class="card text-bg-dark">
+                        <img data-th-src="@{/image/path_tension/path-tension.jpg}" class="card-img" alt="path-tension">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title">From this autumn is working new exhibition in the Dei centre</h5>
+                            <p class="card-text">They set many laser installation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="catalogue/html/parts/footer :: copy"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
