@@ -1,0 +1,4 @@
+rootProject.name = 'my-life-journal'
+include("web")
+include 'common'
+
