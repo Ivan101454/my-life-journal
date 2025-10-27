@@ -13,24 +13,50 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * RestClientArticlesClient class implements ArticlesRestClient interface. It uses RestClient for request
+ * in mostly itself methods.
+ */
 @RequiredArgsConstructor
 public class RestClientArticlesClient implements ArticlesRestClient {
 
-    private final static ParameterizedTypeReference<List<ArticleDto>> NEWS_TYPE_REFERENCE =
+    private final static ParameterizedTypeReference<List<ArticleDto>> ARTICLES_TYPE_REFERENCE =
             new ParameterizedTypeReference<>() {
             };
 
     private final RestClient restClient;
 
-
+    /**
+     * Retrieves the list of article from the external catalogue-api
+     * This method sends a GET request to the endpoint {@code /catalogue-api/articles/list}
+     * and parse response in JSON format in list {@code ArticleDto} objects
+     * @return a {@code List<ArticleDto>} containing all available ArticleDto objects
+     */
     @Override
     public List<ArticleDto> findAllArticle() {
-        return List.of();
+        return restClient
+                .get()
+                .uri("/catalogue-api/articles/list")
+                .retrieve()
+                .body(ARTICLES_TYPE_REFERENCE);
     }
 
+    /**
+     * Retrieve a pagination list ArticleDto objects from the external catalogue-api
+     * This method sends a GET request to the endpoint {@code /catalogue-api/articles/list}
+     * with parameters pageNumber and pageSize
+     * and parse response in JSON format in list {@code ArticleDto} objects
+     * @param pageNumber number os required page
+     * @param pageSize number required elements on every page
+     * @return a {@code List<ArticleDto>} containing ArticleDto objects for the requested page
+     */
     @Override
     public List<ArticleDto> findArticleWithPagination(int pageNumber, int pageSize) {
-        return List.of();
+        return restClient
+                .get()
+                .uri("/catalogue-api/articles/list?pageNumber={pageNumber}&pageSize={pageSize}", pageNumber, pageSize)
+                .retrieve()
+                .body(ARTICLES_TYPE_REFERENCE);
     }
 
     @Override
